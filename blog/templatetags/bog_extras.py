@@ -8,6 +8,15 @@ from django.utils.html import format_html
 user_model = get_user_model()
 register = template.Library()
 
+@register.simple_tag
+def row():
+    return '<div class="row">'
+
+
+@register.simple_tag
+def endrow():
+    return "</div>"
+
 @register.filter
 def author_details(author, current_user):
     if not isinstance(author, user_model):
